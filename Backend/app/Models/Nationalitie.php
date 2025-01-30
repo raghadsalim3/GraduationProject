@@ -11,7 +11,7 @@ class Nationalitie extends Model
     use HasFactory;
     protected $fillable = [
         'country_name',
-        'country_code'
-        ,'nationality_name',
+        'country_code',
+        'nationality_name',
     ];
 }

@@ -11,10 +11,9 @@ class Employee extends Person
     use HasFactory;
     protected $fillable = [
         'role',
-        'position'
-        ,'date_of_birth',
-         'employment_date',
-         'isActive'
+        'position',
+        'date_of_birth',
+        'employment_date',
+        'isActive'
     ];
-    
 }
