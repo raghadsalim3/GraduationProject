@@ -10,11 +10,10 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unique(['persons_id', 'user_types_id']);
-            //
-        });
+    { Schema::table('employees', function (Blueprint $table) {
+        
+        $table->foreign('id')->references('id')->on('persons');
+    });
     }
 
     /**
@@ -22,8 +21,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('employees', function (Blueprint $table) {
+            $table->foreign('id')->references('id')->on('persons');
             //
         });
     }
+    
 };
