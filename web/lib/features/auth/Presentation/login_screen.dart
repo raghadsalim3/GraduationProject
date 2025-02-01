@@ -99,8 +99,8 @@ class LoginScreen extends StatelessWidget {
                       } else {
                         context.read<AuthBloc>().add(
                               LoginEvent(
-                                _usernameController.text,
-                                _passwordController.text,
+                                username: _usernameController.text,
+                                password: _passwordController.text,
                               ),
                             );
                       }
@@ -117,8 +117,8 @@ class LoginScreen extends StatelessWidget {
                       } else {
                         context.read<AuthBloc>().add(
                               LoginEvent(
-                                _usernameController.text,
-                                _passwordController.text,
+                                username: _usernameController.text,
+                                password: _passwordController.text,
                               ),
                             );
                       }
