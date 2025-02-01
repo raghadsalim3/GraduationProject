@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:web/core/theme/app_colors.dart';
 import '../Application/auth_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -124,7 +125,7 @@ class LoginScreen extends StatelessWidget {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: AppColors.primaryColor,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 40, vertical: 15),
                       shape: RoundedRectangleBorder(
@@ -189,7 +190,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Color(0xFF6CB4EE), // لون الأيقونات 6CB4EE
+                color: AppColors.primaryColor, // لون الأيقونات 6CB4EE
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -219,21 +220,22 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.person, color: Color(0xFF6CB4EE)),
+              leading: const Icon(Icons.person, color: AppColors.primaryColor),
               title: const Text('الملف الشخصي'),
               onTap: () {
                 // إضافة وظيفة العنف الشخصي
               },
             ),
             ListTile(
-              leading: const Icon(Icons.child_care, color: Color(0xFF6CB4EE)),
+              leading:
+                  const Icon(Icons.child_care, color: AppColors.primaryColor),
               title: const Text('إضافة طفل'),
               onTap: () {
                 // إضافة وظيفة إضافة طفل
               },
             ),
             ListTile(
-              leading: const Icon(Icons.people, color: Color(0xFF6CB4EE)),
+              leading: const Icon(Icons.people, color: AppColors.primaryColor),
               title: const Text('عرض بيانات الأطفال'),
               onTap: () {
                 // إضافة وظيفة عرض بيانات الأطفال
@@ -265,13 +267,13 @@ class HomeScreen extends StatelessWidget {
                 ),
                 children: [
                   _buildActionCard(
-                      Icons.person, 'الملف الشخصي', const Color(0xFF6CB4EE)),
+                      Icons.person, 'الملف الشخصي', AppColors.primaryColor),
                   _buildActionCard(
-                      Icons.child_care, 'إضافة طفل', const Color(0xFF6CB4EE)),
+                      Icons.child_care, 'إضافة طفل', AppColors.primaryColor),
                   _buildActionCard(
-                      Icons.people, 'عرض الأطفال', const Color(0xFF6CB4EE)),
+                      Icons.people, 'عرض الأطفال', AppColors.primaryColor),
                   _buildActionCard(
-                      Icons.settings, 'الإعدادات', const Color(0xFF6CB4EE)),
+                      Icons.settings, 'الإعدادات', AppColors.primaryColor),
                 ],
               ),
             ),
