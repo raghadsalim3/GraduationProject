@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:web/Core/Theme/app_colors.dart';
 import 'package:web/Featuers/auth/Application/auth_bloc.dart';
+import 'package:web/routes.dart';
 
 class LoginScreen extends StatelessWidget {
   final _usernameController = TextEditingController();
@@ -9,7 +10,7 @@ class LoginScreen extends StatelessWidget {
   final _usernameFocusNode = FocusNode();
   final _passwordFocusNode = FocusNode();
 
-  LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({super.key});
 
   void dispose() {
     _usernameController.dispose();
@@ -29,7 +30,7 @@ class LoginScreen extends StatelessWidget {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
-            Navigator.pushReplacementNamed(context, '/home');
+            Navigator.pushReplacementNamed(context, AppRoutes.home);
           } else if (state is AuthFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.message)),
@@ -151,18 +152,25 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+    return Scaffold(
+      backgroundColor: const Color(0xFFF5F5F5),
+      appBar: AppBar(
+        title: const Text('الرئيسية',
+            style: TextStyle(color: Color.fromARGB(255, 20, 39, 72))),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Color.fromARGB(255, 146, 53, 95)),
+      ),
+      body: const Center(child: Text('مرحباً بك في الصفحة الرئيسية!')),
     );
   }
 }
-
+/*
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -313,4 +321,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-}
+}*/
