@@ -1,40 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:web/Featuers/auth/Application/auth_bloc.dart';
-import 'package:web/enjection.dart.dart';
-import 'package:web/Featuers/auth/Presentation/login_screen.dart';
-import 'package:get_it/get_it.dart';
+
+import 'package:web/features/auth/enjection.dart';
+import 'features/auth/Application/auth_bloc.dart';
+import 'features/auth/Presentation/login_screen.dart';
 
 void main() {
-  setup(useMock: true);
+  setup();
   runApp(const MyApp());
 
-  //final authBloc = getIt<AuthBloc>();
-  //authBloc.add(LoginEvent(username: 'test', password: '123'));
+  final authBloc = getIt<AuthBloc>();
+  authBloc.add(LoginEvent(username: 'test', password: '123'));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BlocProvider<AuthBloc>(
-        create: (context) =>
-            GetIt.instance<AuthBloc>(), // تأكد من أن getIt معرّفة
-        child: BlocBuilder<AuthBloc, AuthState>(
-          builder: (context, state) {
-            if (state is AuthSuccess) {
-              return const HomeScreen();
-            }
-            return LoginScreen();
-          },
-        ),
+      home: BlocProvider(
+        create: (context) => getIt<AuthBloc>(),
+        child: LoginScreen(),
       ),
-      routes: {
-        '/home': (context) => const HomeScreen(),
-      },
     );
   }
 }
