@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('role',255)->nullable();
+            $table->string('role')->default('employee');
             $table->string('position',255)->nullable();
             $table->date('date_of_birth')->nullable();
             $table->date('employment_date')->nullable();

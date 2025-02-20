@@ -10,8 +10,18 @@ class Location extends Model
     /** @use HasFactory<\Database\Factories\LocationFactory> */
     use HasFactory;
     protected $fillable = [
-        'sreet_name',
+        'city_name',
+        'street_name',
         'area_name'
         
     ];
+
+    //Relationships
+    public function healthCenters(){
+        return $this->hasMany(HealthCenter::class);
+    }
+
+    public function persons(){
+        return $this->hasMany(Person::class);
+    }
 }
