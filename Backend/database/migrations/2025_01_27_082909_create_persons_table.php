@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('first_name',255);
             $table->string('last_name',255);
             $table->enum('gender',['male','female']);
-            $table->string('email',255)->nullable();
+            $table->string('email',255)->unique();
             $table->string('phone_number',15)->nullable();
-            $table->string('identity_card_number',50);
-            $table->string('address',255)->null;
+            $table->string('identity_card_number',50)->unique();
+            $table->boolean('isDeceased')->default(false);
             $table->foreignId('nationalities_id')->constrained('nationalities');
             
             

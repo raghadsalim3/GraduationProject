@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('locations', function (Blueprint $table) {
-            $table->string('sreet_name',255);
-            $table->string('area_name',255);
             $table->id();
+            $table->string('city_name',255);
+            $table->string('area_name',255);
+            $table->string('street_name',255);
             $table->timestamps();
         });
     }

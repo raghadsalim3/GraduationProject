@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('nationalities', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('country_name',100);
             $table->string('country_code',10)->nullable();
             $table->string ('nationality_name',100);
+            $table->timestamps();
         });
     }
 
