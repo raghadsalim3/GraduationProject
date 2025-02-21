@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\Models\Person;
 
 class Employee extends Model
 {
@@ -19,6 +20,14 @@ class Employee extends Model
         'isActive',
         'health_center_id'
     ];
+
+    //Relationships
+    public function person(){
+        return $this->belongsTo(Person::class , 'id' , 'id');
+    }
+    public function health_center(){
+        return $this->belongsTo(HealthCenter::class);
+    }
 
     //The main function to create an employee
     function CreateEmployee(Request $request)
@@ -59,4 +68,9 @@ class Employee extends Model
         return $newEmployee;
 
     }
+
+
+      
+
+ 
 }

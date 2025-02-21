@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PersonController;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 //Employee Operations
 Route::apiResource('Employee',EmployeeController::class);
+Route::get('/search/{name}', EmployeeController::class . "@getByname");
 
 
 //Person Operations

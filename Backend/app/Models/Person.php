@@ -32,6 +32,9 @@ class  Person extends Model
     public function nationality(){
         return $this->belongsTo(Nationality::class , 'nationalities_id');
     }
+    public function employee(){
+        return $this->hasOne(Employee::class , 'id' , 'id');
+    }
 
     function CreatePerson(Request $request){
 
