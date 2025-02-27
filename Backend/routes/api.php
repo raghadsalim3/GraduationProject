@@ -17,6 +17,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::apiResource('Employee',EmployeeController::class);
 Route::get('/search/{name}', EmployeeController::class . "@getByname");
 
+Route::get('/employees/{employee}/index',[EmployeeController::class,'index'])->name('employee.index');
+Route::get('/employees/create',[EmployeeController::class,'create'])->name('employee.create');
+
 
 //Person Operations
 Route::apiResource('Person',PersonController::class);

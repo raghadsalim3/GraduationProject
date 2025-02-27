@@ -41,7 +41,12 @@ class EmployeeController extends Controller
                 ], 401);
             }      
     }
-
+    public function create()
+    {
+        // Give me all the HealthCenter that can choose one from them: 
+        $healthCenter=HealthCenter::all();
+        return ['healthCenter'=>$healthCenter];
+    }
 
     /**
      * Store a newly created resource in storage.
