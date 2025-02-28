@@ -57,20 +57,37 @@ class EmployeeController extends Controller
         $employee->CreateEmployee($request);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $name)
+    //Give me the all the data of specified employee that store in DataBase 
+    public function edit(Employee $employee)
     {
-       
+        $healthCenter=HealthCenter::all();
+        return ['employee'=>$employee,'healthCenter'=>$healthCenter];
+    }
+     /**
+     * Display the specified resource.
+     * Type Hinting
+     */
+    public function show(Employee $employee)//
+    {
+        return(['employee'=>$employee]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update($employeeId)
     {
-        //
+        //Find the specified employee by using ID:
+        $singleEmployeeFromDB=Employee::find($employeeId);
+
+        //Update the data after get the specified employee:
+        $singleEmployeeFromDB->update([
+        'role'=>request()->role,
+        'isActive'=>request()->isActive,
+        ]);
+
+        //Return the employee after updated:
+        return($singleEmployeeFromDB);
     }
 
     public function getByname(string $name)
@@ -93,12 +110,28 @@ class EmployeeController extends Controller
                 return  $employees;
             }
 
-        }
+        }   
 
+    }
 
+    public function isActive($employeeId)
+    {
+    // Find the employee by ID
+    $singleEmployeeFromDB = Employee::find($employeeId);
 
-       
+    // Check if the employee exists
+    if (!$singleEmployeeFromDB) {
+        return response()->json(['error' => 'Employee not found'], 404);
+    }
 
+    //Change the status of employee and save it in the vareble:
+    $newStatus = $singleEmployeeFromDB->isActive ? '0' : '1';
+
+    // Update the employee's status
+    $singleEmployeeFromDB->update([
+        'isActive' => $newStatus,
+    ]);
+    return (Employee::all());
     }
 
     /**
